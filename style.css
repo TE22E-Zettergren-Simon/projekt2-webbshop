@@ -1,6 +1,54 @@
 /* Load font family */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap');
 
-html {
-    font-family: manrope, system-ui, sans-serif;
+/* Custom properties */
+:root {
+    /* Colors */
+    --clr-white: #FFFFFF;
+    --clr-black: #000000;
+
+    --clr-neutral-300: #E0E9F5;
+
+    --clr-primary-600: #1E2433;
+    --clr-primary-700: #181A23;
+    --clr-primary-800: #10121A;
+
+    --gradient-primary: linear-gradient(90deg, #000AFF, #9E00FF);
+    --gradient-accent: linear-gradient(90deg, #ADFF00, #00FFA3);
+
+    /* Font styling */
+    --fs-400: 1rem;
+    --fs-500: 1.25rem;
+    --fs-600: 1.5rem;
+    --fs-700: 1.75rem;
+    --fs-900: 2.25rem;
+
+    --fw-thin: 300;
+    --fw-regular: 400;
+    --fw-bold: 600;
+
+    --ff-sans-serif: manrope, system-ui, sans-serif;
+}
+
+/* Styling */
+
+/* Simpler sizing & spacing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+html,
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+
+body {
+    font-family: var(--ff-sans-serif);
 }
