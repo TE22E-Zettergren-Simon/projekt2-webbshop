@@ -13,8 +13,8 @@
     --clr-primary-700: #181A23;
     --clr-primary-800: #10121A;
 
-    --gradient-primary: linear-gradient(90deg, #000AFF, #9E00FF);
-    --gradient-accent: linear-gradient(90deg, #ADFF00, #00FFA3);
+    --gradient-primary: #000AFF, #9E00FF;
+    --gradient-accent: #ADFF00, #00FFA3;
 
     /* Font styling */
     --fs-400: 1rem;
@@ -51,4 +51,10 @@ body {
 
 body {
     font-family: var(--ff-sans-serif);
+}
+
+h1 {
+    background: linear-gradient(var(--gradient-primary));
+    background-clip: text;
+    color: transparent;
 }
