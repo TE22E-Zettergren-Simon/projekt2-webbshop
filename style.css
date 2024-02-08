@@ -50,6 +50,11 @@ body {
 
 
 body {
+    color: var(--clr-black);
+    background: var(--clr-primary-600);
+
+    font-size: var(--fs-400);
+    font-weight: var(--fw-regular);
     font-family: var(--ff-sans-serif);
 }
 
@@ -58,3 +63,36 @@ h1 {
     background-clip: text;
     color: transparent;
 }
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    margin: 1.25em;
+    gap: 1em;
+}
+
+main > div {
+    display: flex;
+
+    background: var(--clr-neutral-300);
+    border-radius: 0.5em;
+}
+
+main > div > img {
+    height: 9rem;
+    border-radius: 0.5em;
+}
+
+main h2 {
+    font-size: var(--fs-700);
+}
+
+main p:nth-child(3) {
+    font-weight: var(--fw-bold);
+}
+
+main p:nth-child(4) {
+    display: none;
+}
+
