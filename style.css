@@ -48,6 +48,11 @@ body {
     text-rendering: optimizeSpeed;
 }
 
+ul,
+ol {
+    list-style: none;
+}
+
 
 body {
     color: var(--clr-black);
@@ -168,4 +173,44 @@ main button {
 
 main button img {
     width: 70%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.25em;
+    padding: 0.75rem;
+
+    background: var(--clr-primary-700);
+}
+
+footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.325em;
+}
+
+footer ul a {
+    color: var(--clr-white);
+    text-decoration: none;
+}
+
+footer li:first-child a {
+    font-weight: var(--fw-bold);
+}
+
+.footer_button {
+    display: block;
+
+    margin: 0 3rem;
+    padding: 0.25rem;
+
+    font-weight: var(--fw-bold);
+    text-align: center;
+    text-decoration: none;
+
+    color: var(--clr-black);
+    background: var(--clr-neutral-300);
+    border-radius: 100vmax;
 }
