@@ -147,12 +147,12 @@ main h2 {
     font-size: var(--fs-600);
 }
 
-main p:nth-child(2) {
+main .price {
     font-size: var(--fs-500);
     font-weight: var(--fw-bold);
 }
 
-main p:nth-child(3) {
+main .description {
     display: none;
 }
 
