@@ -8,6 +8,7 @@
     --clr-black: #000000;
 
     --clr-neutral-300: #E0E9F5;
+    --clr-neutral-700: #2C2E35;
 
     --clr-primary-600: #1E2433;
     --clr-primary-700: #181A23;
@@ -118,6 +119,58 @@ header::after {
     height: 2px;
 
     background: linear-gradient(90deg, var(--gradient-primary));
+}
+
+nav {
+    background: var(--clr-primary-800);
+}
+
+nav h2 {
+    display: inline;
+    color: var(--clr-white);
+    font-size: var(--fs-600);
+}
+
+nav button {
+    position: relative;
+    width: 100%;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    text-align: left;
+}
+
+nav img {
+    width: 1rem;
+}
+
+nav li {
+    position: relative;
+    background: var(--clr-primary-700);
+    padding: 0.25em 0.75rem;
+}
+
+nav button::after,
+nav li::after {
+    content: "";
+    position: absolute;
+    background: var(--clr-neutral-700);
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+}
+
+nav a {
+    color: var(--clr-white);
+    font-size: var(--fs-500);
+    text-decoration: none;
+    transition: opacity 100ms;
+}
+
+nav a:hover {
+    opacity: 60%;
 }
 
 main {
