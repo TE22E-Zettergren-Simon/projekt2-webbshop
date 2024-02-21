@@ -236,12 +236,7 @@ main button p {
 }
 
 footer {
-    display: flex;
-    flex-direction: column;
-
-    gap: 1.25em;
     padding: 0.75rem;
-
     background: var(--clr-primary-700);
 }
 
@@ -249,6 +244,7 @@ footer ul {
     display: flex;
     flex-direction: column;
     gap: 0.325em;
+    margin-bottom: 1.25rem;
 }
 
 footer ul a {
@@ -276,6 +272,10 @@ footer li:first-child a {
 }
 
 @media screen and (min-width: 600px) {
+    header::after {
+        display: none;
+    }
+
     nav > button {
         display: none;
     }
@@ -283,8 +283,11 @@ footer li:first-child a {
     nav ul {
         display: flex;
         justify-content: center;
+
         gap: 0.75rem;
         padding: 0.5rem 0;
+
+        background: none;
     }
 
     nav li::after {
@@ -343,13 +346,10 @@ footer li:first-child a {
         font-size: var(--fs-500);
     }
 
-    footer {
-        gap: 0.5rem;
-    }
-
     footer ul {
         flex-direction: row;
         gap: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
     .footer_button {
@@ -362,6 +362,17 @@ footer li:first-child a {
 @media screen and (min-width: 800px) {
     main {
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer_button {
+        margin: 0;
+        margin-right: 1rem;
+        margin-bottom: auto;
     }
 }
 
