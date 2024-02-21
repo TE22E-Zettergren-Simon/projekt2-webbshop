@@ -217,7 +217,7 @@ main button {
     bottom: 0.5rem;
 
     width: 3rem;
-    aspect-ratio: 1/1;
+    height: 3rem;
 
     background: linear-gradient(var(--gradient-accent));
     border: none;
@@ -226,6 +226,10 @@ main button {
 
 main button img {
     width: 70%;
+}
+
+main button p {
+    display: none;
 }
 
 footer {
@@ -266,4 +270,69 @@ footer li:first-child a {
     color: var(--clr-black);
     background: var(--clr-neutral-300);
     border-radius: 100vmax;
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5em;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    main > div {
+        flex-direction: column;
+    }
+
+    main > div > img {
+        height: auto;
+        max-width: 100%;
+    }
+
+    main h2 {
+        height: 4.125rem;
+        text-align: center;
+    }
+
+    main .price,
+    main .description {
+        margin: 0.125em 0.5em;
+    }
+
+    main .description {
+        height: 4.125rem;
+        display: block;
+    }
+
+    main button {
+        position: static;
+        margin: 0.25em auto;
+        height: 2.25rem;
+        width: 60%;
+    }
+
+    main button img {
+        display: none;
+    }
+
+    main button p {
+        display: block;
+        margin: auto;
+        font-size: var(--fs-500);
+    }
+}
+
+@media screen and (min-width: 800px) {
+    main {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    main {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1.75em;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+    }
 }
