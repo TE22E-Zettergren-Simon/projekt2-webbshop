@@ -322,7 +322,7 @@ footer li:first-child a {
     }
 
     main .description {
-        height: 4.125rem;
+        height: 5.5rem;
         display: block;
     }
 
@@ -341,6 +341,21 @@ footer li:first-child a {
         display: block;
         margin: auto;
         font-size: var(--fs-500);
+    }
+
+    footer {
+        gap: 0.5rem;
+    }
+
+    footer ul {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .footer_button {
+        margin: auto;
+        margin-left: 0.5rem;
+        width: 14rem;
     }
 }
 
