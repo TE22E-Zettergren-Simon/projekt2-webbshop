@@ -63,6 +63,36 @@ body {
   font-family: var(--ff-sans-serif);
 }
 
+.shopping-cart {
+  position: fixed;
+  z-index: 999;
+
+  max-width: 30rem;
+  margin: 3rem;
+  padding: 1rem;
+
+  font-size: var(--fs-500);
+
+  background: var(--clr-neutral-300);
+  border-radius: 0.5em;
+  box-shadow: 0 0 2px 2px rgba(0 0 0 / 0.3);
+}
+
+.shopping-cart_products > div {
+  display: flex;
+  gap: 0.25em;
+  margin-bottom: 0.75em;
+}
+
+.shopping-cart_info {
+  font-weight: var(--fw-bold);
+}
+
+.shopping-cart_price {
+  font-weight: var(--fw-bold);
+  margin-left: auto;
+}
+
 h1 {
   background: linear-gradient(var(--gradient-primary));
   background-clip: text;
@@ -273,6 +303,10 @@ footer li:first-child a {
 }
 
 @media screen and (min-width: 600px) {
+  .shopping-cart {
+    width: 35rem;
+  }
+
   header::after {
     display: none;
   }
