@@ -1,26 +1,35 @@
 // Nav dropdown
-let nav_dropdown = document.querySelector(".nav-dropdown-content");
-let dropdown_is_down = false;
+let navDropdown = document.querySelector(".nav-dropdown-content");
+let dropdownIsDown = false;
 
 function toggleNavDropdown() {
-  if (!dropdown_is_down) {
-    nav_dropdown.style.display = "flex";
+  if (!dropdownIsDown) {
+    navDropdown.style.display = "flex";
   } else {
-    nav_dropdown.style.display = "none";
+    navDropdown.style.display = "none";
   }
-  dropdown_is_down = !dropdown_is_down;
+  dropdownIsDown = !dropdownIsDown;
 }
 
 // Shopping cart
-let total_price = 0;
-let shopping_cart = [];
+//
+// Datatype:
+//   [
+//     {
+//       name: string,
+//       price: number,
+//       amount: number,
+//     },
+//   ]
+let totalPrice = 0;
+let shoppingCart = [];
 
 function addProduct(name, price) {
-  total_price += price;
+  totalPrice += price;
 
-  for (let i = 0; i < shopping_cart.length; i++) {
-    if (shopping_cart[i].name === name) {
-      shopping_cart[i].amount += 1;
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if (shoppingCart[i].name === name) {
+      shoppingCart[i].amount += 1;
       updateShoppingCartHtml();
       return;
     }
@@ -31,35 +40,66 @@ function addProduct(name, price) {
     price: price,
     amount: 1,
   };
-  shopping_cart.push(newProduct);
+  shoppingCart.push(newProduct);
   updateShoppingCartHtml();
 }
 
-let products = document.querySelector(".shopping-cart_products");
+function removeProduct(name) {
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if (shoppingCart[i].name == name) {
+      shoppingCart[i].amount -= 1;
+
+      if (shoppingCart[i].amount == 0) {
+        shoppingCart.splice(i, 1);
+      }
+      updateShoppingCartHtml();
+      return;
+    }
+  }
+}
+
+const products = document.querySelector(".shopping-cart_products");
 
 function updateShoppingCartHtml() {
   products.innerHTML = "";
 
-  for (let i = 0; i < shopping_cart.length; i++) {
-    const product = shopping_cart[i];
+  if (shoppingCart.length == 0) {
+    const info = document.createElement("p");
+    info.innerHTML = "Du har inga varor i kundvagnen";
+    info.classList.add("shopping-cart_info");
 
-    const amount_html = document.createElement("p");
-    amount_html.innerHTML = "(" + product.amount + ")";
-    amount_html.classList.add("shopping-cart_amount");
+    products.appendChild(info);
+  }
 
-    const name_html = document.createElement("p");
-    name_html.innerHTML = product.name;
-    name_html.classList.add("shopping-cart_name");
+  for (let i = 0; i < shoppingCart.length; i++) {
+    const product = shoppingCart[i];
 
-    const price_html = document.createElement("p");
-    price_html.innerHTML = product.price * product.amount + " kr";
-    price_html.classList.add("shopping-cart_price");
+    const amount = document.createElement("p");
+    amount.innerHTML = "(" + product.amount + ")";
+    amount.classList.add("shopping-cart_amount");
 
-    const product_html = document.createElement("div");
-    product_html.appendChild(amount_html);
-    product_html.appendChild(name_html);
-    product_html.appendChild(price_html);
+    const name = document.createElement("p");
+    name.innerHTML = product.name;
+    name.classList.add("shopping-cart_name");
 
-    products.appendChild(product_html);
+    const price = document.createElement("p");
+    price.innerHTML = product.price * product.amount + " kr";
+    price.classList.add("shopping-cart_price");
+
+    const removeImg = document.createElement("img");
+    removeImg.setAttribute("src", "bilder/minus.svg");
+    removeImg.setAttribute("alt", "ta bort produkt");
+    const remove = document.createElement("button");
+    remove.appendChild(removeImg);
+    remove.classList.add("shopping-cart_remove");
+    remove.setAttribute("onclick", `removeProduct('${product.name}')`);
+
+    const productHtml = document.createElement("div");
+    productHtml.appendChild(amount);
+    productHtml.appendChild(name);
+    productHtml.appendChild(price);
+    productHtml.appendChild(remove);
+
+    products.appendChild(productHtml);
   }
 }

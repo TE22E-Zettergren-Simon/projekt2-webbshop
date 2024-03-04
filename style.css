@@ -67,8 +67,14 @@ body {
   position: fixed;
   z-index: 999;
 
-  max-width: 30rem;
-  margin: 3rem;
+  right: 0;
+  left: 0;
+
+  width: min(80vw, 25rem);
+  min-height: 35rem;
+
+  margin: 1.5rem;
+  margin-left: auto;
   padding: 1rem;
 
   font-size: var(--fs-500);
@@ -91,6 +97,23 @@ body {
 .shopping-cart_price {
   font-weight: var(--fw-bold);
   margin-left: auto;
+}
+
+.shopping-cart_remove {
+  background: none;
+  opacity: 55%;
+  border: none;
+
+  transition: opacity 100ms;
+}
+
+.shopping-cart_remove:hover {
+  cursor: pointer;
+  opacity: 40%;
+}
+
+.shopping-cart_remove:active {
+  opacity: 30%;
 }
 
 h1 {
@@ -303,10 +326,6 @@ footer li:first-child a {
 }
 
 @media screen and (min-width: 600px) {
-  .shopping-cart {
-    width: 35rem;
-  }
-
   header::after {
     display: none;
   }
