@@ -8,6 +8,7 @@
   --clr-black: #000000;
 
   --clr-neutral-300: #e0e9f5;
+  --clr-neutral-500: #9398ab;
   --clr-neutral-700: #2c2e35;
 
   --clr-primary-600: #1e2433;
@@ -75,21 +76,25 @@ body {
   font-size: var(--fs-500);
 
   background: var(--clr-neutral-300);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
   box-shadow: 0 0 2px 2px rgba(0 0 0 / 0.3);
+
+  overflow: auto;
 }
 
 .shopping-cart_close {
   position: absolute;
-  inset: 0;
+
+  top: 0.25rem;
+  right: 0.25rem;
   margin-left: auto;
   aspect-ratio: 1/1;
 }
 
 .shopping-cart_products > * {
   display: flex;
-  gap: 0.25em;
-  margin-bottom: 0.5em;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .shopping-cart_info {
@@ -135,6 +140,30 @@ body {
   margin-left: auto;
 }
 
+.shopping-cart_checkout {
+  display: block;
+
+  padding: 0.5rem 1.25rem;
+  margin: 0 auto;
+
+  background: linear-gradient(90deg, var(--gradient-accent));
+  border: none;
+  border-radius: 0.5rem;
+
+  font-size: var(--fs-500);
+  font-weight: var(--fw-bold);
+
+  transition: opacity 100ms;
+}
+
+.shopping-cart_checkout:hover {
+  opacity: 70%;
+}
+
+.shopping-cart_checkout:active {
+  opacity: 40%;
+}
+
 h1 {
   background: linear-gradient(var(--gradient-primary));
   background-clip: text;
@@ -149,7 +178,7 @@ header {
   align-items: center;
   position: relative;
 
-  padding: 0.5em;
+  padding: 0.5rem;
 
   background: var(--clr-primary-700);
 }
@@ -163,7 +192,7 @@ header {
   background: linear-gradient(var(--gradient-primary));
   border: none;
   border-radius: 100vmax;
-  width: 3em;
+  width: 3rem;
   aspect-ratio: 1/1;
 }
 
@@ -201,12 +230,6 @@ nav {
   background: var(--clr-primary-800);
 }
 
-nav h2 {
-  display: inline;
-  color: var(--clr-white);
-  font-size: var(--fs-600);
-}
-
 nav .nav-dropdown-button {
   position: relative;
   width: 100%;
@@ -214,6 +237,13 @@ nav .nav-dropdown-button {
   background: none;
   border: none;
   text-align: left;
+  color: var(--clr-white);
+  font-size: var(--fs-600);
+}
+
+nav .nav-dropdown-button img {
+  transform: rotate(90deg);
+  transition: transform 150ms;
 }
 
 nav img {
@@ -228,7 +258,7 @@ nav ul {
 
 nav li {
   position: relative;
-  padding: 0.25em 0.75rem;
+  padding: 0.25rem 0.75rem;
 }
 
 nav button::after,
@@ -250,31 +280,35 @@ nav a {
   transition: opacity 100ms;
 }
 
-nav a:hover {
+a:hover {
   opacity: 60%;
+}
+
+a:active {
+  opacity: 45%;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr;
 
-  margin: 1.25em;
-  gap: 1em;
+  margin: 1.25rem;
+  gap: 1rem;
 }
 
 main > div {
   display: flex;
   position: relative;
 
-  gap: 0.325em;
+  gap: 0.325rem;
 
   background: var(--clr-neutral-300);
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 main > div > img {
   height: 9rem;
-  border-radius: 0.5em;
+  border-radius: 0.5rem;
 }
 
 main h2 {
@@ -303,17 +337,24 @@ main button {
   background: linear-gradient(var(--gradient-accent));
   border: none;
   border-radius: 100vmax;
+
+  transition: opacity 100ms;
 }
 
 main button:hover {
+  opacity: 70%;
   cursor: pointer;
+}
+
+main button:active {
+  opacity: 40%;
 }
 
 main button img {
   width: 70%;
 }
 
-main button p {
+main button span {
   display: none;
 }
 
@@ -325,8 +366,12 @@ footer {
 footer ul {
   display: flex;
   flex-direction: column;
-  gap: 0.325em;
+  gap: 0.325rem;
   margin-bottom: 1.25rem;
+}
+
+footer a {
+  transition: opacity 100ms;
 }
 
 footer ul a {
@@ -358,6 +403,7 @@ footer li:first-child a {
     max-width: 25rem;
     margin-left: auto;
   }
+
   header::after {
     display: none;
   }
@@ -387,7 +433,7 @@ footer li:first-child a {
 
   main {
     grid-template-columns: 1fr 1fr;
-    gap: 1.5em;
+    gap: 1.5rem;
     margin-left: 2rem;
     margin-right: 2rem;
   }
@@ -408,7 +454,7 @@ footer li:first-child a {
 
   main .price,
   main .description {
-    margin: 0.125em 0.5em;
+    margin: 0.125rem 0.5rem;
   }
 
   main .description {
@@ -418,16 +464,17 @@ footer li:first-child a {
 
   main button {
     position: static;
-    margin: 0.25em auto;
+    margin: 0.5rem auto;
     height: 2.25rem;
     width: 60%;
+    background: linear-gradient(90deg, var(--gradient-accent));
   }
 
   main button img {
     display: none;
   }
 
-  main button p {
+  main button span {
     display: block;
     margin: auto;
     font-size: var(--fs-500);
@@ -466,7 +513,7 @@ footer li:first-child a {
 @media screen and (min-width: 1050px) {
   main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1.75em;
+    gap: 1.75rem;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
   }

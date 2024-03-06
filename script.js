@@ -1,12 +1,15 @@
 // Nav dropdown
 const navDropdown = document.querySelector(".nav-dropdown-content");
+const navDropdownImg = document.querySelector(".nav-dropdown-button img");
 let dropdownIsDown = false;
 
 function toggleNavDropdown() {
   if (!dropdownIsDown) {
     navDropdown.style.display = "flex";
+    navDropdownImg.style.transform = "rotate(0deg)";
   } else {
     navDropdown.style.display = "none";
+    navDropdownImg.style.transform = "rotate(90deg)";
   }
   dropdownIsDown = !dropdownIsDown;
 }
@@ -58,11 +61,11 @@ function addProduct(name, price) {
 
 function removeProduct(name) {
   for (let i = 0; i < shoppingCart.length; i++) {
-    if (shoppingCart[i].name == name) {
+    if (shoppingCart[i].name === name) {
       shoppingCart[i].amount -= 1;
       totalPrice -= shoppingCart[i].price;
 
-      if (shoppingCart[i].amount == 0) {
+      if (shoppingCart[i].amount === 0) {
         shoppingCart.splice(i, 1);
       }
 
@@ -78,7 +81,7 @@ const products = document.querySelector(".shopping-cart_products");
 function updateShoppingCartHtml() {
   products.innerHTML = "";
 
-  if (shoppingCart.length == 0) {
+  if (shoppingCart.length === 0) {
     const info = document.createElement("p");
     info.innerHTML = "Du har inga varor i kundvagnen";
     info.classList.add("shopping-cart_info");
@@ -98,7 +101,6 @@ function updateShoppingCartHtml() {
 
     const amount = document.createElement("p");
     amount.innerHTML = "(" + product.amount + ")";
-    amount.classList.add("shopping-cart_amount");
 
     const name = document.createElement("p");
     name.innerHTML = product.name;
@@ -144,10 +146,10 @@ function updateLocalStorage() {
   localStorage.setItem("total-price", totalPrice);
 }
 
-if (localStorage.getItem("shopping-cart") != null) {
+if (localStorage.getItem("shopping-cart") !== null) {
   shoppingCart = JSON.parse(localStorage.getItem("shopping-cart"));
 }
-if (localStorage.getItem("total-price") != null) {
+if (localStorage.getItem("total-price") !== null) {
   totalPrice = parseInt(localStorage.getItem("total-price"));
 }
 updateShoppingCartHtml();
