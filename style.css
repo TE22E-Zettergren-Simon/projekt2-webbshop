@@ -64,18 +64,13 @@ body {
 }
 
 .shopping-cart {
+  display: none;
   position: fixed;
   z-index: 999;
+  inset: 0;
 
-  right: 0;
-  left: 0;
-
-  width: min(80vw, 25rem);
-  min-height: 35rem;
-
-  margin: 1.5rem;
-  margin-left: auto;
-  padding: 1rem;
+  margin: 0.75rem;
+  padding: 0.75rem;
 
   font-size: var(--fs-500);
 
@@ -84,14 +79,25 @@ body {
   box-shadow: 0 0 2px 2px rgba(0 0 0 / 0.3);
 }
 
-.shopping-cart_products > div {
+.shopping-cart_close {
+  position: absolute;
+  inset: 0;
+  margin-left: auto;
+  aspect-ratio: 1/1;
+}
+
+.shopping-cart_products > * {
   display: flex;
   gap: 0.25em;
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5em;
 }
 
 .shopping-cart_info {
   font-weight: var(--fw-bold);
+}
+
+.shopping-cart_name {
+  max-width: 55%;
 }
 
 .shopping-cart_price {
@@ -99,6 +105,7 @@ body {
   margin-left: auto;
 }
 
+.shopping-cart_close,
 .shopping-cart_remove {
   background: none;
   opacity: 55%;
@@ -107,13 +114,25 @@ body {
   transition: opacity 100ms;
 }
 
+.shopping-cart_close:hover,
 .shopping-cart_remove:hover {
   cursor: pointer;
   opacity: 40%;
 }
 
+.shopping-cart_close:active,
 .shopping-cart_remove:active {
   opacity: 30%;
+}
+
+.shopping-cart_total-price {
+  margin-top: 1.5rem;
+  padding: 0.25rem;
+  font-weight: var(--fw-bold);
+}
+
+.shopping-cart_total-price p:last-child {
+  margin-left: auto;
 }
 
 h1 {
@@ -135,16 +154,21 @@ header {
   background: var(--clr-primary-700);
 }
 
-.header_cart-wrapper {
+.header_cart-button {
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding: 2px;
   background: linear-gradient(var(--gradient-primary));
+  border: none;
   border-radius: 100vmax;
   width: 3em;
   aspect-ratio: 1/1;
+}
+
+.header_cart-button:hover {
+  cursor: pointer;
 }
 
 .header_cart-background {
@@ -281,6 +305,10 @@ main button {
   border-radius: 100vmax;
 }
 
+main button:hover {
+  cursor: pointer;
+}
+
 main button img {
   width: 70%;
 }
@@ -326,6 +354,10 @@ footer li:first-child a {
 }
 
 @media screen and (min-width: 600px) {
+  .shopping-cart {
+    max-width: 25rem;
+    margin-left: auto;
+  }
   header::after {
     display: none;
   }

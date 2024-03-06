@@ -11,17 +11,28 @@
   </head>
   <body>
     <div class="shopping-cart">
+      <button
+        onclick="toggleShoppingCart()"
+        title="Stäng kundvagnen"
+        class="shopping-cart_close"
+      >
+        <img src="bilder/kryss.svg" alt="stäng kundvagnen" />
+      </button>
       <div class="shopping-cart_products">
         <p class="shopping-cart_info">Du har inga varor i kundvagnen</p>
       </div>
     </div>
     <header>
       <h1>Top IEM</h1>
-      <div class="header_cart-wrapper">
+      <button
+        onclick="toggleShoppingCart()"
+        title="Öppna kundvagnen"
+        class="header_cart-button"
+      >
         <div class="header_cart-background">
           <img src="bilder/kundvagn.svg" alt="Kundvagnen" />
         </div>
-      </div>
+      </button>
     </header>
     <nav>
       <button class="nav-dropdown-button" onclick="toggleNavDropdown()">
@@ -78,7 +89,9 @@
             Apple leverar här deras bästa trådlösa hörlurar. Praktiska hörlurar
             med bra ljudkvalitet.
           </p>
-          <button>
+          <button
+            onclick="addProduct('Apple AirPods Pro 2nd Generation', 2899)"
+          >
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>
@@ -93,7 +106,7 @@
             Perfekt ljud till ett otroligt pris. Hörlurarna har även en skön och
             smidig design.
           </p>
-          <button>
+          <button onclick="addProduct('Shure Aonic 3', 2749)">
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>
@@ -108,7 +121,7 @@
             In-Ear hörlurarna med det bästa ljudet på marknaden. Ansluts enkelt
             med lätta, tjocka sladdar.
           </p>
-          <button>
+          <button onclick="addProduct('Sennheiser IE 900', 15990)">
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>
@@ -126,7 +139,7 @@
             Om du letar efter en tydlig och neutral bas så ska du ha de här!
             Bästa basljudet för IEMs.
           </p>
-          <button>
+          <button onclick="addProduct('Sennheiser MOMENTUM TW 3', 2499)">
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>
@@ -144,7 +157,7 @@
             Riktigt bra ljud från ett par snygga hörlurar. De har även helt
             utmärkt Noise Cancelling.
           </p>
-          <button>
+          <button onclick="addProduct('Bose QuietComfort Ultra Earbuds', 3349)">
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>
@@ -162,7 +175,7 @@
             Hörlurarna för den sportande! Smidig design som inte ramlar ur när
             du är aktiv.
           </p>
-          <button>
+          <button onclick="addProduct('Beats Powerbeats Pro', 3099)">
             <img src="bilder/kundvagn-plus.svg" alt="Lägg till i kundvagn" />
             <p>Lägg till</p>
           </button>

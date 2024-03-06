@@ -1,5 +1,5 @@
 // Nav dropdown
-let navDropdown = document.querySelector(".nav-dropdown-content");
+const navDropdown = document.querySelector(".nav-dropdown-content");
 let dropdownIsDown = false;
 
 function toggleNavDropdown() {
@@ -12,8 +12,20 @@ function toggleNavDropdown() {
 }
 
 // Shopping cart
-//
-// Datatype:
+const shoppingCartHtml = document.querySelector(".shopping-cart");
+let shoppingCartIsShown = false;
+
+function toggleShoppingCart() {
+  if (!shoppingCartIsShown) {
+    shoppingCartHtml.style.display = "block";
+  } else {
+    shoppingCartHtml.style.display = "none";
+  }
+  shoppingCartIsShown = !shoppingCartIsShown;
+}
+
+let totalPrice = 0;
+let shoppingCart = [];
 //   [
 //     {
 //       name: string,
@@ -21,8 +33,6 @@ function toggleNavDropdown() {
 //       amount: number,
 //     },
 //   ]
-let totalPrice = 0;
-let shoppingCart = [];
 
 function addProduct(name, price) {
   totalPrice += price;
@@ -48,10 +58,12 @@ function removeProduct(name) {
   for (let i = 0; i < shoppingCart.length; i++) {
     if (shoppingCart[i].name == name) {
       shoppingCart[i].amount -= 1;
+      totalPrice -= shoppingCart[i].price;
 
       if (shoppingCart[i].amount == 0) {
         shoppingCart.splice(i, 1);
       }
+
       updateShoppingCartHtml();
       return;
     }
@@ -69,7 +81,15 @@ function updateShoppingCartHtml() {
     info.classList.add("shopping-cart_info");
 
     products.appendChild(info);
+
+    return;
   }
+
+  const info = document.createElement("p");
+  info.innerHTML = "Din kundvagn";
+  info.classList.add("shopping-cart_info");
+
+  products.appendChild(info);
 
   for (let i = 0; i < shoppingCart.length; i++) {
     const product = shoppingCart[i];
@@ -93,6 +113,7 @@ function updateShoppingCartHtml() {
     remove.appendChild(removeImg);
     remove.classList.add("shopping-cart_remove");
     remove.setAttribute("onclick", `removeProduct('${product.name}')`);
+    remove.setAttribute("title", "Ta bort från kundvagn");
 
     const productHtml = document.createElement("div");
     productHtml.appendChild(amount);
@@ -102,4 +123,16 @@ function updateShoppingCartHtml() {
 
     products.appendChild(productHtml);
   }
+
+  const totalInfo = document.createElement("p");
+  totalInfo.innerHTML = "Summa";
+  const totalPriceHtml = document.createElement("p");
+  totalPriceHtml.innerHTML = `${totalPrice} kr`;
+
+  const total = document.createElement("div");
+  total.classList.add("shopping-cart_total-price");
+  total.appendChild(totalInfo);
+  total.appendChild(totalPriceHtml);
+
+  products.appendChild(total);
 }
