@@ -41,6 +41,7 @@ function addProduct(name, price) {
     if (shoppingCart[i].name === name) {
       shoppingCart[i].amount += 1;
       updateShoppingCartHtml();
+      updateLocalStorage();
       return;
     }
   }
@@ -52,6 +53,7 @@ function addProduct(name, price) {
   };
   shoppingCart.push(newProduct);
   updateShoppingCartHtml();
+  updateLocalStorage();
 }
 
 function removeProduct(name) {
@@ -65,6 +67,7 @@ function removeProduct(name) {
       }
 
       updateShoppingCartHtml();
+      updateLocalStorage();
       return;
     }
   }
@@ -81,7 +84,6 @@ function updateShoppingCartHtml() {
     info.classList.add("shopping-cart_info");
 
     products.appendChild(info);
-
     return;
   }
 
@@ -136,3 +138,16 @@ function updateShoppingCartHtml() {
 
   products.appendChild(total);
 }
+
+function updateLocalStorage() {
+  localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
+  localStorage.setItem("total-price", totalPrice);
+}
+
+if (localStorage.getItem("shopping-cart") != null) {
+  shoppingCart = JSON.parse(localStorage.getItem("shopping-cart"));
+}
+if (localStorage.getItem("total-price") != null) {
+  totalPrice = parseInt(localStorage.getItem("total-price"));
+}
+updateShoppingCartHtml();
